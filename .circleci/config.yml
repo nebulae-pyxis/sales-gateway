@@ -15,7 +15,7 @@ jobs:
             export PATH=~/.npm-global/bin:$PATH
             source ~/.profile
             npm install -g @nebulae/cli
-            nebulae compose-api production --api-type=NEBULAE_GATEWAY --api-repo=https://github.com/nebulae-pyxis/sales-gateway.git --api-id=sales-gateway --output-dir=/tmp/nebulae/sales-gateway/ --store-type=GCP_DATASTORE --gcp-service-account-token=/tmp/gcloud-service-key.json      
+            nebulae compose-api production --api-type=NEBULAE_GATEWAY --api-repo=https://github.com/nebulae-pyxis/sales-gateway.git --api-id='sales-gateway' --output-dir='/tmp/nebulae/sales-gateway/' --store-type=GCP_DATASTORE --gcp-service-account-token=/tmp/gcloud-service-key.json      
             ls /tmp/nebulae/sales-gateway
       - persist_to_workspace:
           root: /tmp/nebulae
