@@ -31,7 +31,7 @@ spec:
         - name: google-application-credentials
           mountPath: "/etc/GOOGLE_APPLICATION_CREDENTIALS"
           readOnly: true
-        image: nebulaepyxis/salesgateway:1.0.1
+        image: nebulaepyxis/salesgateway:1.0.2
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
@@ -82,9 +82,9 @@ spec:
         - name: GATEWAY_EVENTS_TOPIC_SUBSCRIPTION
           value: events-sales-gateway
         - name: GATEWAY_MATERIALIZED_VIEW_UPDATES_TOPIC
-          value: materialized-view-updates
+          value: sales-gateway-materialized-view-updates
         - name: GATEWAY_MATERIALIZED_VIEW_UPDATES_TOPIC_SUBSCRIPTION
-          value: materialized-view-updates-sales-gateway
+          value: sales-gateway-materialized-view-updates-sales-gateway
         - name: REPLY_TIMEOUT
           value: '2000'
         # JWT CONGIF        
