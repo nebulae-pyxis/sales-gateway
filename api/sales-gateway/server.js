@@ -16,6 +16,7 @@ const mergeGraphqlSchemas = require('merge-graphql-schemas');
 const fileLoader = mergeGraphqlSchemas.fileLoader;
 const mergeTypes = mergeGraphqlSchemas.mergeTypes;
 const gqlSchema = require('./graphql/index');
+const RequireAuthDirective = require('./tools/graphql/directives/requireAuthDirective');
 const broker = require('./broker/BrokerFactory')();
 const cors = require('cors');
 const graphql = require('graphql');
@@ -35,8 +36,10 @@ const PORT = process.env.GRAPHQL_END_POINT_PORT || 3000;
 const typeDefs = gqlSchema.types;
 //graphql resolvers compendium
 const resolvers = gqlSchema.resolvers;
+//graphql directives compendium
+const schemaDirectives = { requireAuth: RequireAuthDirective };
 //graphql schema = join types & resolvers
-const schema = graphqlTools.makeExecutableSchema({ typeDefs, resolvers });
+const schema = graphqlTools.makeExecutableSchema({ typeDefs, resolvers, schemaDirectives });
 
 // ApolloEngine
 const { ApolloEngine } = require('apollo-engine');
@@ -63,12 +66,13 @@ const jwtPublicKey = process.env.JWT_PUBLIC_KEY.replace(/\\n/g, '\n');
 server.use(
     process.env.GRAPHQL_HTTP_END_POINT,
     bodyParser.json(),
-    expressJwt({
-        secret: jwtPublicKey,
-        requestProperty: 'authToken',
-        credentialsRequired: true,
-        algorithms: ['RS256']
-    }), graphqlExpress(req => ({
+    // expressJwt({
+    //     secret: jwtPublicKey,
+    //     requestProperty: 'authToken',
+    //     credentialsRequired: true,
+    //     algorithms: ['RS256']
+    // }), 
+    graphqlExpress(req => ({
         schema,
         context: {
             authToken: req.authToken,
