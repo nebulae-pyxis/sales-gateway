@@ -66,6 +66,7 @@ const jwtPublicKey = process.env.JWT_PUBLIC_KEY.replace(/\\n/g, '\n');
 server.use(
     process.env.GRAPHQL_HTTP_END_POINT,
     bodyParser.json(),
+    // This code was commented due to the token validation will be performed with the @requireAuth directive
     // expressJwt({
     //     secret: jwtPublicKey,
     //     requestProperty: 'authToken',

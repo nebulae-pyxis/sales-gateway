@@ -1,6 +1,6 @@
 {
   "name": "@nebulaengineering/sales-gateway",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Microservices SALES API Gateway",
   "main": "server.js",
   "scripts": {
