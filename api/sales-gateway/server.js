@@ -40,11 +40,9 @@ console.log('typeDefs ===> ', JSON.stringify(typeDefs));
 //graphql resolvers compendium
 const resolvers = gqlSchema.resolvers;
 //graphql directives compendium
-// const schemaDirectives = { requireAuth: RequireAuthDirective };
+ const schemaDirectives = { requireAuth: RequireAuthDirective };
 //graphql schema = join types & resolvers
-const schema = graphqlTools.makeExecutableSchema({ typeDefs, resolvers
-//    , schemaDirectives 
-});
+const schema = graphqlTools.makeExecutableSchema({ typeDefs, resolvers, schemaDirectives});
 
 // ApolloEngine
 const { ApolloEngine } = require('apollo-engine');
