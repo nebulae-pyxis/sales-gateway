@@ -115,7 +115,7 @@ class PubSubBroker {
                             replyTo: this.gatewayRepliesTopic
                         }));
             })
-            .do(messageId => console.log(`Message published through ${topicName}, MessageId=${messageId}`, new Date()))
+            //.do(messageId => console.log(`Message published through ${topicName}, MessageId=${messageId}`, new Date()))
             ;
     }
 
@@ -186,7 +186,7 @@ class PubSubBroker {
      */
     getSubscription$(topicName, subscriptionName) {
         return this.getTopic$(topicName)
-            .do(topic => console.log('getTopic => ', topic.name))
+            //.do(topic => console.log('getTopic => ', topic.name))
             .mergeMap(topic => Rx.Observable.fromPromise(
                 topic.subscription(subscriptionName)
                     .get({ autoCreate: true }))
