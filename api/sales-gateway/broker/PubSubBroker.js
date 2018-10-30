@@ -172,7 +172,7 @@ class PubSubBroker {
         return Rx.Observable.fromPromise(this.pubsubClient.createTopic(topicName))
             .switchMap(data => {
                 this.verifiedTopics[topicName] = this.pubsubClient.topic(topicName);
-                console.log(`Topic ${topicName} have been created and set into the cache`);
+                console.log(`Topic ${topicName} have been created and set into the cache.`);
                 return Rx.Observable.of(this.verifiedTopics[topicName]);
             });
     }
