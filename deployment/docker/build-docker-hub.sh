@@ -10,6 +10,9 @@ echo "- List files"
 ls deployment/docker/sales-gateway
 echo "- List files graphql"
 ls deployment/docker/sales-gateway/graphql
+echo "- List files user-management"
+ls deployment/docker/sales-gateway/graphql/user-management
+
 docker build  -t $DOCKERHUB_NAMESPACE/$DOCKERHUB_IMAGE:$DOCKERHUB_TAG -t $DOCKERHUB_NAMESPACE/$DOCKERHUB_IMAGE:latest deployment/docker/
 docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASS
 docker push $DOCKERHUB_NAMESPACE/$DOCKERHUB_IMAGE:$DOCKERHUB_TAG
