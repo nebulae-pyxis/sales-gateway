@@ -34,12 +34,17 @@ const jsonwebtoken = require('jsonwebtoken');
 const PORT = process.env.GRAPHQL_END_POINT_PORT || 3000;
 //graphql types compendium
 const typeDefs = gqlSchema.types;
+
+console.log('typeDefs ===> ', JSON.stringify(typeDefs));
+
 //graphql resolvers compendium
 const resolvers = gqlSchema.resolvers;
 //graphql directives compendium
-const schemaDirectives = { requireAuth: RequireAuthDirective };
+// const schemaDirectives = { requireAuth: RequireAuthDirective };
 //graphql schema = join types & resolvers
-const schema = graphqlTools.makeExecutableSchema({ typeDefs, resolvers, schemaDirectives });
+const schema = graphqlTools.makeExecutableSchema({ typeDefs, resolvers
+//    , schemaDirectives 
+});
 
 // ApolloEngine
 const { ApolloEngine } = require('apollo-engine');

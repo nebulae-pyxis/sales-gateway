@@ -13,7 +13,7 @@ const resolversArray = fileLoader(
     { extensions: ['.js'], recursive: true }
 );
 
-
+console.log('typesArray1 ===> ', JSON.stringify(typesArray));
 
 module.exports = {
     types: mergeTypes(typesArray, { all: true }),
