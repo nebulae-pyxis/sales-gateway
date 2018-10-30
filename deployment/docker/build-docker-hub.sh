@@ -12,6 +12,8 @@ echo "- List files graphql"
 ls deployment/docker/sales-gateway/graphql
 echo "- List files user-management"
 ls deployment/docker/sales-gateway/graphql/user-management
+echo "- cat schema gql"
+cat deployment/docker/sales-gateway/graphql/user-management/schema.gql
 
 docker build  -t $DOCKERHUB_NAMESPACE/$DOCKERHUB_IMAGE:$DOCKERHUB_TAG -t $DOCKERHUB_NAMESPACE/$DOCKERHUB_IMAGE:latest deployment/docker/
 docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASS
