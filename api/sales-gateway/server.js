@@ -110,7 +110,7 @@ engine.listen({
             subscribe,
             schema,
             onConnect: async (connectionParams, webSocket, connectionContext) => {
-                console.log(`GraphQL_WS.onConnect: origin=${connectionContext.request.headers.origin} url=${connectionContext.request.url}`);
+                //console.log(`GraphQL_WS.onConnect: origin=${connectionContext.request.headers.origin} url=${connectionContext.request.url}`);
                 const encondedToken$ = connectionParams.authToken
                     ? Rx.Observable.of(connectionParams.authToken)
                     : connectionContext.request.headers['authorization']
@@ -139,7 +139,7 @@ engine.listen({
                         () => console.log(`GraphQL_WS.onDisconnect + onUnSubscribe: Completed OK; origin=${connectionContext.request.headers.origin} url=${connectionContext.request.url};`)
                     );
                 }else{
-                    console.log(`GraphQL_WS.onDisconnect; origin=${connectionContext.request.headers.origin} url=${connectionContext.request.url}; WARN: no onUnSubscribe callback found`);
+                    //console.log(`GraphQL_WS.onDisconnect; origin=${connectionContext.request.headers.origin} url=${connectionContext.request.url}; WARN: no onUnSubscribe callback found`);
                 }                
             },
             // DO NOT ACTIVATE: FOR SOME REASON THIS MESS UP WITH CHAIN AND DOES NOT INJECT THE ARG AND CONTEXT ON THE RESOLVER

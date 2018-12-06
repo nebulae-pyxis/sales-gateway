@@ -1,6 +1,6 @@
 #!/bin/bash
 export DOCKERHUB_IMAGE=salesgateway
-export DOCKERHUB_TAG=1.0.7
+export DOCKERHUB_TAG=1.0.8
 
 rm -rf deployment/docker/sales-gateway/
 cp -R $API_SHELL_PATH/sales-gateway deployment/docker/sales-gateway
