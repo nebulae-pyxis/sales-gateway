@@ -29,7 +29,6 @@ const expressJwt = require('express-jwt');
 //This is for validation through websockets
 const jsonwebtoken = require('jsonwebtoken');
 
-
 //Service Port
 const PORT = process.env.GRAPHQL_END_POINT_PORT || 3000;
 //graphql types compendium
