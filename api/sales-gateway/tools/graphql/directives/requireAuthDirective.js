@@ -1,4 +1,5 @@
-const { SchemaDirectiveVisitor } = require("graphql-tools");
+const { SchemaDirectiveVisitor } = require("apollo-server");
+const { defaultFieldResolver } = require("graphql");
 //This is for Token validation
 const jwt = require('jsonwebtoken');
 
@@ -10,7 +11,6 @@ class RequireAuthDirective extends SchemaDirectiveVisitor {
     const { role } = this.args;
 
     field.resolve = async function(...args) {
-      // console.log('context => ', context);
       const [, , ctx] = args;
       if (!ctx || !ctx.encodedToken) {
         const error = new Error();

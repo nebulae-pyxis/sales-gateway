@@ -38,12 +38,15 @@ spec:
         livenessProbe:
           # an http probe
           httpGet:
-            path: /api/sales-gateway/graphiql
+            path: /api/sales-gateway/graphql/liveness
             port: 3000
           # length of time to wait for a pod to initialize
           # after pod startup, before applying health checking
           initialDelaySeconds: 5
           timeoutSeconds: 10
+        resources:
+          requests:
+            cpu: "50m"
         env:
         - name: NODE_ENV
           value: production
@@ -55,7 +58,9 @@ spec:
         - name: GRAPHQL_HTTP_END_POINT
           value: /api/sales-gateway/graphql/http
         - name: GRAPHIQL_HTTP_END_POINT
-          value: /api/sales-gateway/graphiql
+          value: /api/sales-gateway/graphql/http
+        - name: GRAPHQL_LIVENESS_HTTP_END_POINT
+          value: /api/sales-gateway/graphql/liveness
         - name: GRAPHQL_WS_END_POINT
           value: /api/sales-gateway/graphql/ws
         # APOLLO ENGINE CONFIG
